@@ -7,12 +7,12 @@ require __DIR__ . '/bootstrap/app.php';
 $kernel = require __DIR__ . '/bootstrap/kernel.php';
 
 // Include necessary components
-use App\\Http\\Controllers\\Auth\\AuthenticatedSessionController;
-use App\\Http\\Requests\\Auth\\LoginRequest;
-use Illuminate\\Foundation\\Testing\\TestCase as TestingTestCase;
-use App\\Models\\User;
-use Illuminate\\Foundation\\Auth\\User as Authenticatable;
-use Illuminate\\Support\\Facades\\Auth;
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Requests\Auth\LoginRequest;
+use Illuminate\Foundation\Testing\TestCase as TestingTestCase;
+use App\Models\User;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Facades\Auth;
 
 // Create a user for testing
 $user = User::factory()->create();
@@ -48,8 +48,8 @@ try {
 
 echo "\nSummary:\n";
 
-echo "1. The User factory creates passwords with 'password' (line 31 of UserFactory.php)\n");
-echo "2. The User model has 'email_verified_at' set to 'datetime' (line 47 of User.php)\n");
-echo "3. The User model extends Authenticatable (Laravel's Auth\User) (line 8 of User.php)\n");
+echo "1. The User factory creates passwords with 'password' (line 31 of UserFactory.php)\n";
+echo "2. The User model has 'email_verified_at' set to 'datetime' (line 47 of User.php)\n";
+echo "3. The User model extends Authenticatable (Laravel's Auth\\User) (line 8 of User.php)\n";
 
 echo "\nAll basic tests completed.\n";

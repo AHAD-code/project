@@ -7,7 +7,7 @@ require __DIR__ . '/bootstrap/app.php';
 
 $kernel = require __DIR__ . '/bootstrap/kernel.php';
 
-use App\\Models\\User;
+use App\Models\User;
 
 $testUser = User::factory()->create();
 
@@ -24,7 +24,7 @@ echo "Password 'password' matches hash: {$password}\n\n";
 
 if ($password) {
     // In the test, it would use the LoginRequest
-    $user = App\\Models\\User::find(1);
+    $user = App\Models\User::find(1);
     if ($user) {
         Auth::guard('web')->login($user);
         $authenticated = Auth::guard('web')->check();

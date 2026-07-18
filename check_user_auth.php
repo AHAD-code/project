@@ -6,7 +6,7 @@ require __DIR__ . '/bootstrap/app.php';
 
 $kernel = require __DIR__ . '/bootstrap/kernel.php';
 
-use App\\Models\\User;
+use App\Models\User;
 
 // Clear existing users
 User::where('email', 'LIKE', 'test_%@%')->delete();
@@ -28,7 +28,7 @@ try {
 }
 
 // Check if the user can authenticate
-$user = App\\Models\\User::find($testUser->id);
+$user = App\Models\User::find($testUser->id);
 if ($user) {
     $authenticating = Auth::attempt(['email' => $user->email, 'password' => 'password']);
     echo "Auth::attempt() result: " . ($authenticating ? "SUCCESS" : "FAILURE") . "\n";

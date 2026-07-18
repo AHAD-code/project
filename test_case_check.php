@@ -38,7 +38,7 @@ if (method_exists($testCase, 'assertAuthenticated')) {
 }
 
 // Check the User model methods
-$userClass = new App\\Models\\User();
+$userClass = new App\Models\User();
 $classMethods = get_class_methods($userClass);
 echo "\nUser model methods:\n";
 for ($i = 0; $i < count($classMethods); $i++) {
@@ -50,7 +50,7 @@ for ($i = 0; $i < count($classMethods); $i++) {
 // Check the database
 if ($user->exists) {
     echo "\nDirect database query:\n";
-    $directUser = App\\Models\\User::find($user->id);
+    $directUser = App\Models\User::find($user->id);
     if ($directUser) {
         echo "User found via direct query: {$directUser->email}\\n";
         echo "Password hash in DB: {$directUser->password}\n";
