@@ -7,7 +7,7 @@ require __DIR__ . '/bootstrap/app.php';
 
 $kernel = require __DIR__ . '/bootstrap/kernel.php';
 
-use App\\Models\\User;
+use App\Models\User;
 
 // Create a test user
 $testUser = User::factory()->create();

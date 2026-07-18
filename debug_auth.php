@@ -7,7 +7,7 @@ require __DIR__ . '/bootstrap/app.php';
 $kernel = require __DIR__ . '/bootstrap/kernel.php';
 
 // Create a test user using the factory and check authentication
-use App\\Models\\User;
+use App\Models\User;
 
 $user = User::factory()->create();
 echo "Created user: {$user->email}\n";
@@ -28,8 +28,8 @@ if ($authenticated) {
 }
 
 // Test with LoginRequest
-$request = new App\\Http\\Requests\\Auth\\LoginRequest();
-$response = new App\\Http\\Responses\\RedirectResponse();
+$request = new App\Http\Requests\Auth\LoginRequest();
+$response = new App\Http\Responses\RedirectResponse();
 // Try to authenticate using the request
 try {
     // This is how LoginRequest::authenticate() works
