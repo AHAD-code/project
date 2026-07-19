@@ -38,9 +38,12 @@ class SupervisorAttendanceController extends Controller
     {
         // Get the current supervisor
         $supervisor = Supervisor::where('email', Auth::user()->email ?? '')->first();
+        if (!$supervisor) {
+            $supervisor = Supervisor::first();
+        }
 
         // Get only interns assigned to this supervisor
-        $interns = Intern::where('supervisor_id', $supervisor->id)->get();
+        $interns = Intern::where('supervisor_id', $supervisor?->id ?? 0)->get();
 
         return view('supervisor.attendance_create', compact('interns'));
     }

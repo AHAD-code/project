@@ -1,57 +1,54 @@
-namespace Tests\Feature\Auth;
+<?php
 
-use App\Models\User;
-use Tests\TestCase;
-
-test('login screen can be rendered', function (TestCase $test) {
-    $response = $test->get('/login');
+test('login screen can be rendered', function () {
+    $response = $this->get('/login');
 
     $response->assertStatus(200);
 });
 
-test('users can authenticate using the login screen', function (TestCase $test) {
-    $user = $test->createTestUser('student');
+test('users can authenticate using the login screen', function () {
+    $user = $this->createTestUser('intern');
 
-    $response = $test->post('/login', [
+    $response = $this->post('/login', [
         'email' => $user->email,
         'password' => 'password',
         'role_login_type' => 'student',
     ]);
 
-    $test->assertAuthenticated();
+    $this->assertAuthenticated();
     $response->assertRedirect(route('dashboard', absolute: false));
 });
 
-test('users can not authenticate with invalid password', function (TestCase $test) {
-    $user = $test->createTestUser('student');
+test('users can not authenticate with invalid password', function () {
+    $user = $this->createTestUser('intern');
 
-    $test->post('/login', [
+    $this->post('/login', [
         'email' => $user->email,
         'password' => 'wrong-password',
         'role_login_type' => 'student',
     ]);
 
-    $test->assertGuest();
+    $this->assertGuest();
 });
 
-test('users can logout', function (TestCase $test) {
-    $user = $test->createTestUser('student');
+test('users can logout', function () {
+    $user = $this->createTestUser('intern');
 
-    $response = $test->actingAs($user)->post('/logout');
+    $response = $this->actingAs($user)->post('/logout');
 
-    $test->assertGuest();
+    $this->assertGuest();
     $response->assertRedirect('/');
 });
 
-test('supervisor can authenticate using the login screen', function (TestCase $test) {
-    $user = $test->createTestUser('supervisor');
+test('supervisor can authenticate using the login screen', function () {
+    $user = $this->createTestUser('supervisor');
 
-    $response = $test->post('/login', [
+    $response = $this->post('/login', [
         'email' => $user->email,
         'password' => 'password',
         'role_login_type' => 'supervisor',
     ]);
 
-    $test->assertAuthenticated();
+    $this->assertAuthenticated();
     $response->assertRedirect(route('dashboard', absolute: false));
 });

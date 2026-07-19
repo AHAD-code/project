@@ -1,4 +1,4 @@
-<?Php
+<?php
 namespace Tests;
 
 use App\Models\User;
@@ -18,7 +18,7 @@ class TestCase extends BaseTestCase
      * @param string $password
      * @return App\Models\User
      */
-    protected function createTestUser(string $role = null, string $password = 'password'): User
+    public function createTestUser(string $role = null, string $password = 'password'): User
     {
         // Create a user and explicitly set the password.
         $user = User::factory()->create([
